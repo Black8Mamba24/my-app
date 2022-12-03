@@ -14,15 +14,7 @@ import {
 export default function App() {
 	return (
 		<View style={styles.container}>
-			<Image
-				style={{
-					width: 100,
-					height: 100,
-				}}
-				source={{
-					uri: 'https://i.pinimg.com/736x/1c/be/92/1cbe92737bfba141fad4b1540f065121.jpg',
-				}}
-			/>
+			<Text> Przerwa </Text>
 		</View>
 	)
 }
