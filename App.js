@@ -1,29 +1,13 @@
-import { useState } from 'react'
-import { StyleSheet, View, Text, TextInput } from 'react-native'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+import PhotoList from './components/PhotoList'
+
+const queryClient = new QueryClient()
 
 export default function App() {
-	const [value, setValue] = useState('')
-
 	return (
-		<View style={styles.container}>
-			<Text>Value: {value}</Text>
-			<TextInput style={styles.input} onChangeText={text => setValue(text)} />
-		</View>
+		<QueryClientProvider client={queryClient}>
+			<PhotoList />
+		</QueryClientProvider>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	input: {
-		backgroundColor: '#eee',
-		paddingVertical: 8,
-		paddingHorizontal: 16,
-		width: '50%',
-		borderRadius: 4,
-	},
-})
