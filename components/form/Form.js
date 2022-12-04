@@ -14,10 +14,9 @@ export default function Form() {
 	} = useForm({
 		mode: 'onBlur',
 		defaultValues: {
-			firstName: '',
-			lastName: '',
-			city: '',
-			country: '',
+			email: '',
+			password: '',
+			repeatPassword: '',
 		},
 		resolver: yupResolver(validationSchema),
 	})
@@ -30,11 +29,9 @@ export default function Form() {
 		<View style={styles.container}>
 			<Text>Basic Form</Text>
 			<Input control={control} name='email' placeholder='Address Email' />
-			<Input control={control} name='firstName' placeholder='First name' />
-			<Input control={control} name='lastName' placeholder='Last name' />
-			<Input control={control} name='city' placeholder='City' />
-			<Input control={control} name='country' placeholder='Country' />
-			<Button title='Submit form' onPress={handleSubmit(onSubmit)} disabled={!isValid} />
+			<Input control={control} name='password' placeholder='Password' secureTextEntry={true} />
+			<Input control={control} name='repeatPassword' placeholder='Repeat password' secureTextEntry={true} />
+			<Button title='Log in' onPress={handleSubmit(onSubmit)} disabled={!isValid} />
 		</View>
 	)
 }

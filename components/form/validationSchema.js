@@ -1,4 +1,4 @@
-import { object, string } from 'yup'
+import { object, ref, string } from 'yup'
 
 export const validationSchema = object().shape({
 	firstName: string().required('Name is required'),
@@ -6,4 +6,9 @@ export const validationSchema = object().shape({
 	email: string().email('Invalid email').required('Email is required'),
 	city: string().required('City is required'),
 	country: string().required('Country is required'),
+	password: string().min(8, 'Password must be at least 8 characters').required('Password is required'),
+	repeatPassword: string()
+		.required()
+		.oneOf([ref('password')], 'Password must match'),
 })
+
