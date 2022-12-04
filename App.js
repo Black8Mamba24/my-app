@@ -1,13 +1,13 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import PhotoList from './components/PhotoList'
+import Form from './components/form/Form'
 
 const queryClient = new QueryClient()
 
 export default function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
-			<PhotoList />
+			<Form />
 		</QueryClientProvider>
 	)
 }

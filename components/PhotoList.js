@@ -1,16 +1,12 @@
-import { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, FlatList, Image } from 'react-native'
+import { useQuery } from '@tanstack/react-query'
 
 async function getPhotos() {
 	return fetch('https://jsonplaceholder.typicode.com/photos').then(response => response.json())
 }
 
-export default function App() {
-	const [photos, setPhotos] = useState([])
-
-	useEffect(() => {
-		getPhotos().then(photos => setPhotos(photos))
-	}, [])
+export default function PhotoList() {
+	const { data } = useQuery(['photos'], getPhotos)
 
 	const itemRenderer = ({ item, index }) => (
 		<View style={[[styles.listItemContainer, index % 2 === 0 ? styles.odd : {}]]}>
@@ -24,7 +20,7 @@ export default function App() {
 			ListHeaderComponent={() => <Text style={styles.header}>Photos</Text>}
 			ListFooterComponent={() => <Text style={styles.footer}>End</Text>}
 			ListEmptyComponent={() => <Text style={styles.empty}>Empty</Text>}
-			data={photos}
+			data={data}
 			keyExtractor={item => item.id}
 			renderItem={itemRenderer}
 		/>
