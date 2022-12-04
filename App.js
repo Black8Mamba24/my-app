@@ -1,13 +1,16 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { NavigationContainer } from '@react-navigation/native'
 
-import Form from './components/form/Form'
+import { MainNavigator } from './src/navigators'
 
 const queryClient = new QueryClient()
 
 export default function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Form />
+			<NavigationContainer>
+				<MainNavigator />
+			</NavigationContainer>
 		</QueryClientProvider>
 	)
 }
